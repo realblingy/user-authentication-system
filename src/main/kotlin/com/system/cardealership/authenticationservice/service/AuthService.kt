@@ -17,10 +17,10 @@ class AuthService(
             ?: throw UsernameNotFoundException("User not found with username: $username")
 
         // Check if user exists and password matches
-//        if (user.password != password) {
-//
-//        }
-        // Return null if user not found or password does not match
-        return jwtService.generateToken(user)
+        if (user.password == password) {
+            return jwtService.generateToken(user)
+        } else {
+            throw UsernameNotFoundException("Provided incorrect credentials")
+        }
     }
 }
