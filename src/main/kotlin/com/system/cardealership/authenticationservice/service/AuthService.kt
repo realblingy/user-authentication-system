@@ -2,23 +2,25 @@ package com.system.cardealership.authenticationservice.service
 
 import com.system.cardealership.authenticationservice.entity.User
 import com.system.cardealership.authenticationservice.repository.UserRepository
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 
 @Service
-class AuthService {
-    @Autowired
-    lateinit var userRepository: UserRepository
+class AuthService(
+    private val userRepository: UserRepository,
+    private val jwtService: JwtService
+) {
 
-    fun loginUser(username: String, password: String): User? {
+    fun loginUser(username: String, password: String): String {
         // Find user by username
-        val user = userRepository.findByUsername(username)
+        val user = userRepository.findByUserName(username)
+            ?: throw UsernameNotFoundException("User not found with username: $username")
 
         // Check if user exists and password matches
-        if (user != null && user.password == password) {
-            return user
-        }
+//        if (user.password != password) {
+//
+//        }
         // Return null if user not found or password does not match
-        return null
+        return jwtService.generateToken(user)
     }
 }

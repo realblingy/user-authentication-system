@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 import java.security.Key
@@ -11,9 +12,13 @@ import java.util.*
 
 
 @Service
-class JwtService {
+class JwtService(
+    @Value("\${jwt.secret}")
+    private val secretKey: String,
 
-    private val secret = "QYJQJPWSsz14wjgaWQg9ckJ8FzmGoKDI"
+    @Value("\${jwt.expiration}")
+    private val expiration: Long
+) {
 
     fun extractUsername(token: String): String? {
         return extractClaim(token, Claims::getSubject)
@@ -31,7 +36,7 @@ class JwtService {
     fun generateToken(extraClaims: Map<String, Any>, userDetails: UserDetails): String {
         val currentTimeMillis = System.currentTimeMillis()
         val issuedAt = Date(currentTimeMillis)
-        val expiration = Date(currentTimeMillis + 30 * 60 * 1000) // 30 minutes from current time
+        val expiration = Date(currentTimeMillis + expiration) // 30 minutes from current time
 
         return Jwts
             .builder()
@@ -68,7 +73,7 @@ class JwtService {
 
     fun getSignInKey(): Key {
         // Convert the secret string to a byte array
-        val secretBytes = secret.toByteArray()
+        val secretBytes = secretKey.toByteArray()
         // Create a signing key using HMAC-SHA256 algorithm
         return Keys.hmacShaKeyFor(secretBytes)
     }
