@@ -36,7 +36,7 @@ class JwtService(
     fun generateToken(extraClaims: Map<String, Any>, userDetails: UserDetails): String {
         val currentTimeMillis = System.currentTimeMillis()
         val issuedAt = Date(currentTimeMillis)
-        val expiration = Date(currentTimeMillis + 36000000) // 30 minutes from current time
+        val expiration = Date(currentTimeMillis + expiration) // 30 minutes from current time
 
         return Jwts
             .builder()
