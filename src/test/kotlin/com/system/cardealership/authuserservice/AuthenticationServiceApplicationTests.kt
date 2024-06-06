@@ -1,4 +1,4 @@
-package com.system.cardealership.authenticationservice
+package com.system.cardealership.authuserservice
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

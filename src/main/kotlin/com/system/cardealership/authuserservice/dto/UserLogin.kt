@@ -1,4 +1,4 @@
-package com.system.cardealership.authenticationservice.dto
+package com.system.cardealership.authuserservice.dto
 
 data class UserLogin(
     val username: String,

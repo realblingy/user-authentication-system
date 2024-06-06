@@ -1,6 +1,6 @@
-package com.system.cardealership.authenticationservice.config
+package com.system.cardealership.authuserservice.config
 
-import com.system.cardealership.authenticationservice.repository.UserRepository
+import com.system.cardealership.authuserservice.repository.UserRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager

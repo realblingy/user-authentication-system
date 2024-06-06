@@ -1,6 +1,6 @@
-package com.system.cardealership.authenticationservice.entity
+package com.system.cardealership.authuserservice.entity
 
-import com.system.cardealership.authenticationservice.enums.Role
+import com.system.cardealership.authuserservice.enums.Role
 import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -20,7 +20,7 @@ data class User(
     val passWord: String,
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     val role: Role
 
     ): UserDetails {

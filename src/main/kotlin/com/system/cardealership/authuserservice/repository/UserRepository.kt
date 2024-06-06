@@ -1,5 +1,5 @@
-package com.system.cardealership.authenticationservice.repository
-import com.system.cardealership.authenticationservice.entity.User
+package com.system.cardealership.authuserservice.repository
+import com.system.cardealership.authuserservice.entity.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

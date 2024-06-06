@@ -1,4 +1,4 @@
-package com.system.cardealership.authenticationservice.config
+package com.system.cardealership.authuserservice.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -24,6 +24,7 @@ class SecurityConfiguration(private val jwtAuthenticationFilter: JwtAuthenticati
             .authorizeHttpRequests { authorize ->
                 authorize
                     .requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/user/**").hasAuthority("ADMIN")
                     .anyRequest().authenticated()
             }
             .sessionManagement { sessionManager ->

@@ -1,7 +1,8 @@
-package com.system.cardealership.authenticationservice.controller
+package com.system.cardealership.authuserservice.controller
 
-import com.system.cardealership.authenticationservice.entity.User
-import com.system.cardealership.authenticationservice.repository.UserRepository
+import com.system.cardealership.authuserservice.entity.User
+import com.system.cardealership.authuserservice.repository.UserRepository
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,6 +16,6 @@ class UserController(private val userRepository: UserRepository) {
     @GetMapping("/{username}")
     fun getUserByUsername(@PathVariable username: String): ResponseEntity<User?> {
         val user = userRepository.findByUserName(username)
-        return ResponseEntity.ok(user)
+        return ResponseEntity(user, HttpStatus.OK)
     }
 }

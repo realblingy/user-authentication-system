@@ -1,6 +1,6 @@
-package com.system.cardealership.authenticationservice.config
+package com.system.cardealership.authuserservice.config
 
-import com.system.cardealership.authenticationservice.service.JwtService
+import com.system.cardealership.authuserservice.service.JwtService
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

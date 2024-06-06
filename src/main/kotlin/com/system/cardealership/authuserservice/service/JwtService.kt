@@ -1,4 +1,4 @@
-package com.system.cardealership.authenticationservice.service
+package com.system.cardealership.authuserservice.service
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts

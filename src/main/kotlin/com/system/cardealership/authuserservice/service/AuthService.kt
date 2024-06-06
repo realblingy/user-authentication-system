@@ -1,6 +1,6 @@
-package com.system.cardealership.authenticationservice.service
+package com.system.cardealership.authuserservice.service
 
-import com.system.cardealership.authenticationservice.repository.UserRepository
+import com.system.cardealership.authuserservice.repository.UserRepository
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 
